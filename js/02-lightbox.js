@@ -27,4 +27,5 @@ let gallerySlider = new SimpleLightbox(".gallery .gallery__item", {
   captionPosition: "bottom",
   captionDelay: 250,
 });
+
 gallerySlider.on("shown.simplelightbox");
