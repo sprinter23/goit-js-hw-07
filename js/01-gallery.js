@@ -21,6 +21,7 @@ galleryListRef.addEventListener("click", onOpenModal);
 window.addEventListener("keydown", onCloseModal);
 
 let modal;
+
 function onOpenModal(event) {
   event.preventDefault();
   if (!event.target.classList.contains("gallery__image")) {
@@ -36,3 +37,4 @@ function onCloseModal(event) {
     modal?.close();
   }
 }
+
