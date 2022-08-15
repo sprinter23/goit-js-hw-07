@@ -18,9 +18,6 @@ const galleryListRef = document.querySelector(".gallery");
 galleryListRef.insertAdjacentHTML("beforeend", markup);
 
 galleryListRef.addEventListener("click", onOpenModal);
-window.addEventListener("keydown", onCloseModal);
-
-let modal;
 
 function onOpenModal(event) {
   event.preventDefault();
@@ -28,13 +25,18 @@ function onOpenModal(event) {
     return;
   }
   const imageOriginalLink = event.target.dataset.source;
-  modal = basicLightbox.create(`<img width="1400" height="900" src="${imageOriginalLink}"> `);
+  const modal = basicLightbox.create(`<img width="1400" height="900" src="${imageOriginalLink}"> `,
+    {
+      onShow: () => document.addEventListener("keydown", onCloseModal),
+      onClose: () => document.removeEventListener("keydown", onCloseModal),
+    }
+  );
   modal.show();
-}
 
-function onCloseModal(event) {
-  if (event.code === "Escape") {
-    modal?.close();
+
+  function onCloseModal(event) {
+    if (event.key === "Escape") {
+      modal.close();
+    }
   }
 }
-

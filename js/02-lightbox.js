@@ -15,17 +15,9 @@ const markup = galleryItems
 const galleryListRef = document.querySelector(".gallery");
 galleryListRef.insertAdjacentHTML("beforeend", markup);
 
-
-galleryListRef.addEventListener("click", onOpenSlider);
-
-function onOpenSlider(event) {
-  event.preventDefault();
-}
-
-let gallerySlider = new SimpleLightbox(".gallery .gallery__item", {
+new SimpleLightbox(".gallery .gallery__item", {
   captionsData: "alt",
   captionPosition: "bottom",
   captionDelay: 250,
 });
 
-gallerySlider.on("shown.simplelightbox");
